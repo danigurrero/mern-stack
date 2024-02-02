@@ -1,6 +1,6 @@
-// Arrays to store the game pattern, button colours, and user clicked pattern
+// Arrays to store the game pattern, button colors, and user clicked pattern
 var gamePattern = [];
-var buttonColours = ["red", "blue", "green", "yellow"];
+var buttonColors = ["red", "blue", "green", "yellow"];
 var userClickedPattern = [];
 
 // Variables to track the current level, game start status, and incorrect sequence
@@ -35,7 +35,7 @@ function nextSequence() {
     $("h1").text("Level " + level);
 
     var randomNumber = Math.floor(Math.random() * 4);
-    var randomChosenColour = buttonColours[randomNumber];
+    var randomChosenColour = buttonColors[randomNumber];
     gamePattern.push(randomChosenColour);
 
     var selectedButton = $("#" + randomChosenColour);
