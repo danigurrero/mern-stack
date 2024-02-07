@@ -17,16 +17,20 @@ const db = new pg.Client({
 })
 
 db.connect();
-app.get("/", async (req, res) => {
-  //Write your code here.
-  const result = await db.query("Select country_code from visited_countries")
+async function checkVisisted() {
+  const result = await db.query("SELECT country_code FROM visited_countries");
+
   let countries = [];
   result.rows.forEach((country) => {
     countries.push(country.country_code);
   });
-  console.log(result.rows);
+  return countries;
+}
+
+// GET home page
+app.get("/", async (req, res) => {
+  const countries = await checkVisisted();
   res.render("index.ejs", { countries: countries, total: countries.length });
-  db.end();
 });
 
 app.post("/add", async (req, res) => {
